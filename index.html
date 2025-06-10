@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+body {
+
+width: 100%;
+text-align: center;
+
+}
+
+        label {
+
+            display: block;
+            margin-bottom: 25px;
+        }
+        
+input {
+
+margin-bottom: 15px;
+
+
+}
+
+        button {
+
+            display: block;
+            width: 100px; 
+            margin: 0 auto;
+            
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Indice de masa Muscular</h1>
+
+    <label for="Nombre"> Escribe tu nombre: </label>
+    <input type="text" id="nombre" required>
+    <label for="masa">Introduce tu peso: </label>
+    <input type="number" id="peso" required min="1">
+    <label for="estatura"> Introduce tu estatura:</label>
+    <input type="number" id="estatura" required min="1">
+    <label for="genero"> Introduce el genero: </label>
+    <input type="radio" id="genero" name="genero" value="mujer"> Mujer
+    <input type="radio" id="genero1" name="genero" value="hombre" checked> Hombre
+
+    <button type="button" onclick="calcular()" id="b1">click</button>
+
+    <p id="p1"></p>
+    <p id="p2"></p>
+
+    <script>
+
+        const NOMBRE = (document.getElementById("nombre"));
+        const PESO = (document.getElementById("peso"));
+        const ESTATURA = (document.getElementById("estatura"));
+        const GENERO = (document.getElementById("genero"));
+        const GENERO1 = (document.getElementById("genero1"));
+
+
+
+        function calcular() {
+
+            let nombre = (NOMBRE.value);
+            console.log("El nombre es: ", nombre)
+            let peso = (PESO.value);
+            console.log("El peso es: ", peso)
+            let estatura = (ESTATURA.value);
+            console.log("La estatura es: ", estatura)
+            let genero = (GENERO.checked);
+            console.log(genero)
+            let genero1 = (GENERO1.checked);
+            console.log(genero1);
+
+            let resultado = peso / estatura;
+            console.log("El valor es: ", resultado);
+
+            if (genero) {
+
+                document.getElementById("p1").innerHTML = "Señora Rita su peso nominal es:" + resultado;
+
+            } else if (genero1) {
+
+                document.getElementById("p1").innerHTML = "Señor Paco su peso nominal es:" + resultado;
+
+            }
+
+            let estado = '';
+
+
+
+            if (peso < 18.5) {
+                estado = "Peso bajo";
+                document.getElementById("p2").innerHTML = " peso Bajo";
+            } else if (peso >= 18.5 && peso < 25) {
+                estado = "Peso normal";
+                document.getElementById("p2").innerHTML = " peso normal";
+            } else if (peso >= 25 && peso < 30) {
+                estado = "Sobrepeso";
+                document.getElementById("p2").innerHTML = " sobrepeso";
+            } else {
+                estado = "Obesidad";
+                document.getElementById("p2").innerHTML = " OBESIDAD";
+            }
+
+
+        }
+
+
+        //Dos caclculos diferentes, Dos logicas diferentes, Dos variables diferentes una POR cada calculo de cada logica, haciendo dos if de manera INDIVIDUAL
+
+    </script>
+
+</body>
+
+</html>
